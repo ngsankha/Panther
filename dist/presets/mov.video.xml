@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Panther Video Profile</comment>
+<entry key="desc">Quicktime Video File (*.mov)</entry>
+<entry key="format">mov</entry>
+<entry key="videoCodec">qtrle</entry>
+<entry key="audioCodec">libmp3lame</entry>
+<entry key="audioBitrate">56000</entry>
+<entry key="audioChannels">0</entry>
+<entry key="audioSampling">22050</entry>
+<entry key="audioVolume">100</entry>
+<entry key="videoBitrate">500000</entry>
+<entry key="videoFps">24</entry>
+<entry key="videoHeight">480</entry>
+<entry key="videoWidth">640</entry>
+<entry key="videoDuration"></entry>
+<entry key="videoOffset"></entry>
+</properties>

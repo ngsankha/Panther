@@ -1,9 +1,25 @@
-Panther Media Converter
------------------------
-The Panther Media Converter allows you to convert your media files from
-one format to the other. It is both easy to easy and add many fun and
-useful features.
+Panther
+Developer - Sankha Narayan Guria
+--------------------------------
+Panther is a free and open source program that you can use to 
+encode your media files from one format to the other. It has 
+a simple user interface and should be very easy to get started 
+with. It can even reduce the size of music files.
 
-Cross-platform and programmed in Java.
+Please let me know if you have any feedback, suggestions or bug 
+reports for the program. I will be glad to look into them. 
 
-Developed by Sankha Narayan Guria (sankha93@gmail.com)
+Email me at sankha93@gmail.com
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
