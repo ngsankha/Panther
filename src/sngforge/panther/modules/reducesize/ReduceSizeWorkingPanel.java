@@ -1,23 +1,36 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ReduceSizeWorkingPanel.java
+ *  Panther is a program to encode your media files from one format to the other.
+ *  Copyright (C) 2012  Sankha Narayan Guria
  *
- * Created on 18 Oct, 2010, 12:20:18 PM
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
-
 package sngforge.panther.modules.reducesize;
 
-import javax.swing.*;
-import it.sauronsoftware.jave.*;
-import sngforge.panther.*;
-import sngforge.panther.gui.*;
-import sngforge.panther.modules.*;
-import java.io.*;
-import java.awt.*;
+import it.sauronsoftware.jave.AudioAttributes;
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.EncodingAttributes;
+import java.awt.Desktop;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.SwingWorker;
+import sngforge.panther.Globals;
+import sngforge.panther.gui.ReportPanel;
+import sngforge.panther.modules.EncoderListener;
+import sngforge.panther.modules.ID3TagCopier;
+import sngforge.panther.modules.WorkingPanel;
 
 public class ReduceSizeWorkingPanel extends WorkingPanel{
 

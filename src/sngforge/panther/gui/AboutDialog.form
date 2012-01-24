@@ -62,17 +62,17 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/sngforge/panther/resources/panther-logo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h1&gt;Panther&lt;/h1&gt;&lt;br/&gt;&#xa;Programmed by Sankha Narayan Guria (sankha93@gmail.com)&lt;br/&gt;&#xa;Copyright (C) 2011, Sankha Narayan Guria"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;h1&gt;Panther&lt;/h1&gt;&lt;br/&gt;&#xa;Programmed by Sankha Narayan Guria (sankha93@gmail.com)&lt;br/&gt;&#xa;Copyright (C) 2012, Sankha Narayan Guria"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="jTextPane1">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JEditorPane" name="aboutText">
         </Component>
       </SubComponents>
     </Container>

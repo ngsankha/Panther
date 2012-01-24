@@ -1,15 +1,24 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * AboutDialog.java
+ *  Panther is a program to encode your media files from one format to the other.
+ *  Copyright (C) 2012  Sankha Narayan Guria
  *
- * Created on Jun 21, 2011, 2:38:23 PM
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
-
 package sngforge.panther.gui;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +30,7 @@ public class AboutDialog extends javax.swing.JDialog {
     public AboutDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        loadText();
     }
 
     /** This method is called from within the constructor to
@@ -34,7 +44,7 @@ public class AboutDialog extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        aboutText = new javax.swing.JEditorPane();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -43,10 +53,10 @@ public class AboutDialog extends javax.swing.JDialog {
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/panther-logo.png"))); // NOI18N
-        jLabel1.setText("<html>\n<h1>Panther</h1><br/>\nProgrammed by Sankha Narayan Guria (sankha93@gmail.com)<br/>\nCopyright (C) 2011, Sankha Narayan Guria");
+        jLabel1.setText("<html>\n<h1>Panther</h1><br/>\nProgrammed by Sankha Narayan Guria (sankha93@gmail.com)<br/>\nCopyright (C) 2012, Sankha Narayan Guria");
 
-        jTextPane1.setEditable(false);
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setViewportView(aboutText);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
         jButton1.setText("Close");
@@ -107,12 +117,22 @@ public class AboutDialog extends javax.swing.JDialog {
             }
         });
     }
+    
+    private void loadText(){
+        aboutText.setEditable(false);
+        try{
+            aboutText.setPage(getClass().getResource("/sngforge/panther/resources/about"));
+        }catch(Exception e){
+            e.printStackTrace(System.err);
+            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JEditorPane aboutText;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 
 }

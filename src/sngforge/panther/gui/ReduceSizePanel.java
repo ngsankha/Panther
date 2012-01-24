@@ -1,24 +1,37 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ReduceSizePanel.java
+ *  Panther is a program to encode your media files from one format to the other.
+ *  Copyright (C) 2012  Sankha Narayan Guria
  *
- * Created on 1 Oct, 2010, 5:00:26 PM
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
-
 package sngforge.panther.gui;
 
-import sngforge.panther.modules.reducesize.ReduceSizeWorkingPanel;
-import sngforge.panther.modules.reducesize.ReduceSizeEntry;
-import sngforge.panther.*;
-import it.sauronsoftware.jave.*;
-import javax.swing.*;
-import javax.swing.filechooser.*;
+import it.sauronsoftware.jave.AudioInfo;
+import it.sauronsoftware.jave.Encoder;
+import it.sauronsoftware.jave.MultimediaInfo;
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import sngforge.panther.Globals;
+import sngforge.panther.modules.reducesize.ReduceSizeEntry;
+import sngforge.panther.modules.reducesize.ReduceSizeWorkingPanel;
 
 /**
  *

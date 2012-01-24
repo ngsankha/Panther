@@ -1,14 +1,32 @@
-
+/*
+ *  Panther is a program to encode your media files from one format to the other.
+ *  Copyright (C) 2012  Sankha Narayan Guria
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 package sngforge.panther.modules.video;
 
-import sngforge.panther.modules.audio.*;
-import sngforge.panther.modules.EncoderListener;
-import javax.swing.*;
 import it.sauronsoftware.jave.*;
-import sngforge.panther.*;
-import sngforge.panther.gui.*;
-import java.io.*;
+import java.io.File;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.SwingWorker;
+import sngforge.panther.Globals;
+import sngforge.panther.gui.ReportPanel;
+import sngforge.panther.modules.EncoderListener;
 
 public class VideoEncoderWorkingPanel extends sngforge.panther.modules.WorkingPanel{
 
@@ -167,7 +185,7 @@ public class VideoEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
                             Globals.errorList.add(ex);
                         }
                     Globals.report=Globals.report+"\nErrors:\n\n\n";
-                    if(Globals.errorList.size()!=0){
+                    if(!Globals.errorList.isEmpty()){
                         for(int i=0;i<Globals.errorList.size();i++)
                         Globals.report=Globals.report+(Exception)Globals.errorList.get(i);
                     }
