@@ -18,6 +18,8 @@
  */
 package sngforge.panther.gui;
 
+import java.awt.Desktop;
+import java.net.URI;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +47,8 @@ public class AboutDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         aboutText = new javax.swing.JEditorPane();
-        jButton1 = new javax.swing.JButton();
+        closeBtn = new javax.swing.JButton();
+        webBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("About Panther");
@@ -58,11 +61,18 @@ public class AboutDialog extends javax.swing.JDialog {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setViewportView(aboutText);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
-        jButton1.setText("Close");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        closeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
+        closeBtn.setText("Close");
+        closeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                closeBtnActionPerformed(evt);
+            }
+        });
+
+        webBtn.setText("<html>\n<b>Project Page on Github</b><br/>\n<u>https://github.com/sankha93/Panther</u>");
+        webBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                webBtnActionPerformed(evt);
             }
         });
 
@@ -78,8 +88,9 @@ public class AboutDialog extends javax.swing.JDialog {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(webBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -90,16 +101,28 @@ public class AboutDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(closeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(webBtn))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_closeBtnActionPerformed
+
+    private void webBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webBtnActionPerformed
+        Desktop d=Desktop.getDesktop();
+        try{
+            d.browse(new URI("https://github.com/sankha93/Panther"));
+        }catch(Exception e){
+            e.printStackTrace(System.err);
+            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_webBtnActionPerformed
 
     /**
     * @param args the command line arguments
@@ -130,9 +153,10 @@ public class AboutDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JEditorPane aboutText;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton closeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton webBtn;
     // End of variables declaration//GEN-END:variables
 
 }
