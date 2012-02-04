@@ -1,0 +1,10 @@
+Panther Release Instructions
+-----------------------------
+1. Build the source code in Netbeans
+2. Copy the presets directory to the dist folder
+3. To make the Windows EXE use the panther-launch4j.xml
+   to build the wrapper EXE. Then put the EXE in the dist 
+   folder.
+4. Now use win_setup.iss to make the setup with Inno Setup.
+5. For linux put panther file in the same folder as dist and
+   then make it into a zip.
