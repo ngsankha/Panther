@@ -26,6 +26,9 @@ import sngforge.panther.modules.EncoderEntry;
 import sngforge.panther.modules.WorkingPanel;
 import sngforge.panther.modules.video.PresetData;
 
+/*
+ * Stores all the global (static) variables used universally in the application
+ */
 public class Globals {
     public static JFrame mainFrame;
     public static JScrollPane scrollPane;

@@ -69,7 +69,7 @@ public class AboutDialog extends javax.swing.JDialog {
             }
         });
 
-        webBtn.setText("<html>\n<b>Project Page on Github</b><br/>\n<u>https://github.com/sankha93/Panther</u>");
+        webBtn.setText("<html>\n<b>Project Website</b><br/>\n<u>http://sankha93.github.com/Panther</u>");
         webBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 webBtnActionPerformed(evt);
@@ -114,6 +114,9 @@ public class AboutDialog extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_closeBtnActionPerformed
 
+    /*
+     * opens the Panther website
+     */
     private void webBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_webBtnActionPerformed
         Desktop d=Desktop.getDesktop();
         try{
@@ -141,6 +144,9 @@ public class AboutDialog extends javax.swing.JDialog {
         });
     }
     
+    /*
+     * loads the readme into the dialog
+     */
     private void loadText(){
         aboutText.setEditable(false);
         try{

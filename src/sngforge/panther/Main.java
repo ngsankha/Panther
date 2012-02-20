@@ -27,14 +27,20 @@ import sngforge.panther.gui.MainPanel;
 
 public class Main {
 
+    /*
+     * The main method.
+     * Execution begins here
+     */
     public static void main(String[] args) throws Exception{
         setLogger();
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
         try{
+            //setting up the look and feel
             UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceRavenGraphiteGlassLookAndFeel");
             SwingUtilities.invokeLater(new Runnable(){
             public void run(){
+                //creating the main parent window
                 Globals.mainFrame=new JFrame("Panther");
                 Globals.mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/sngforge/panther/resources/panther-logo.png")));
                 Globals.scrollPane=new JScrollPane(new MainPanel());
@@ -49,6 +55,10 @@ public class Main {
         }
     }
     
+    /*
+     * Sets up the Logger
+     * Stores all output and error messages in files for error tracking
+     */
     public static void setLogger(){
         File f=new File(System.getProperty("user.home")+"/.panther");
         if(!f.exists())

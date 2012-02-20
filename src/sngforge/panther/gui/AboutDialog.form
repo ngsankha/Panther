@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="webBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;b&gt;Project Page on Github&lt;/b&gt;&lt;br/&gt;&#xa;&lt;u&gt;https://github.com/sankha93/Panther&lt;/u&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;b&gt;Project Website&lt;/b&gt;&lt;br/&gt;&#xa;&lt;u&gt;http://sankha93.github.com/Panther&lt;/u&gt;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="webBtnActionPerformed"/>
