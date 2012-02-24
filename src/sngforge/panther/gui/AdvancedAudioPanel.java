@@ -285,6 +285,9 @@ public class AdvancedAudioPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * Browse button's code
+     */
     private void browseOutputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseOutputActionPerformed
         JFileChooser jfc=new JFileChooser();
         jfc.showSaveDialog(this);
@@ -309,6 +312,9 @@ public class AdvancedAudioPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
 }//GEN-LAST:event_simpleActionPerformed
 
+    /*
+     * starts the encoding process
+     */
     private void encodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encodeActionPerformed
         AudioEntry sae=new AudioEntry();
         int channel;

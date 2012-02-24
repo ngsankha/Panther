@@ -226,6 +226,9 @@ public class ReduceSizePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * adds files to the list
+     */
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         JFileChooser jfc=new JFileChooser();
         jfc.setMultiSelectionEnabled(true);
@@ -239,11 +242,17 @@ public class ReduceSizePanel extends javax.swing.JPanel {
         filelist.setListData(files.toArray());
     }//GEN-LAST:event_addActionPerformed
 
+    /*
+     * removes files from the list
+     */
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         files.remove(filelist.getSelectedIndex());
         filelist.setListData(files.toArray());
     }//GEN-LAST:event_removeActionPerformed
 
+    /*
+     * selects the output folder
+     */
     private void browseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseActionPerformed
         JFileChooser jfc=new JFileChooser();
         jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -259,6 +268,9 @@ public class ReduceSizePanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_cancelActionPerformed
 
+    /*
+     * gets the bitrate of the selected file
+     */
     private void findBitrateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findBitrateActionPerformed
         try{
             Encoder e=new Encoder();
@@ -272,6 +284,9 @@ public class ReduceSizePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_findBitrateActionPerformed
 
+    /*
+     * starts the encoding operation
+     */
     private void encodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encodeActionPerformed
         ReduceSizeEntry rse=new ReduceSizeEntry();
         rse.saveSet(files.toArray(),Integer.parseInt((String)bitrate.getSelectedItem()),folderPath.getText(),preserveTags.isSelected(),openFolder.isSelected());

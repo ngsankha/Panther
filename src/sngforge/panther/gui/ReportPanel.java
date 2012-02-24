@@ -124,6 +124,9 @@ public class ReportPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_closeActionPerformed
 
+    /*
+     * saves the report to a text file
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JFileChooser jfc=new JFileChooser();
         FileFilter filter;
@@ -143,6 +146,9 @@ public class ReportPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /*
+     * loads the report and errors of the task
+     */
     public void populateReport(){
         if(Globals.cancelled)
             Globals.report="The task was cancelled!";

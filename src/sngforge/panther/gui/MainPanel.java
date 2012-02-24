@@ -152,10 +152,16 @@ public class MainPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * launches the help
+     */
     private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
         sngforge.jelp.Main.launch();
     }//GEN-LAST:event_helpActionPerformed
 
+    /*
+     * starts the about dialog
+     */
     private void aboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutActionPerformed
         new AboutDialog(Globals.mainFrame,true).setVisible(true);
     }//GEN-LAST:event_aboutActionPerformed
@@ -188,6 +194,10 @@ public class MainPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_convertVideoActionPerformed
 
+    /*
+     * batch processing feature
+     * under development
+     */
     public void hideBatchButton(){
         batchConversion.setVisible(false);
     }
