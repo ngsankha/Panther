@@ -141,10 +141,16 @@ public class ReduceSizeWorkingPanel extends WorkingPanel{
                 }
     }//GEN-LAST:event_cancelActionPerformed
 
+    /*
+     * upadtes the progress bar on screen
+     */
     public void setProgress(int val){
         currProgress.setValue(val);
     }
 
+    /*
+     * starts the encoding process to reduce the file size using the stored settings
+     */
     public void process(){
         rswp=this;
         Globals.cancelled=false;

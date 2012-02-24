@@ -138,10 +138,16 @@ public class VideoEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
                 }
     }//GEN-LAST:event_cancelActionPerformed
 
+    /*
+     * updates the progress bar on screen
+     */
     public void setProgress(int val){
         currProgress.setValue(val);
     }
 
+    /*
+     * starts the encoding process with the settings stored
+     */
     public void process(){
         vewp=this;
         Globals.cancelled=false;

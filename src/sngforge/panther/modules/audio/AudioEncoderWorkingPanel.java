@@ -129,6 +129,9 @@ public class AudioEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * method called when cancel button is clicked
+     */
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         int choice=JOptionPane.showConfirmDialog(this, "Are you sure you want to cancel?", "Panther", JOptionPane.YES_NO_OPTION);
                 if(choice==JOptionPane.YES_OPTION){
@@ -140,10 +143,16 @@ public class AudioEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
                 }
     }//GEN-LAST:event_cancelActionPerformed
 
+    /*
+     * updates the progress bar on screen
+     */
     public void setProgress(int val){
         currProgress.setValue(val);
     }
 
+    /*
+     * this method is used when the task is started via the simple window
+     */
     public void processSimple(){
         aewp=this;
         Globals.cancelled=false;
@@ -188,6 +197,9 @@ public class AudioEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
             sw.execute();
     }
 
+    /*
+     * this method is used when the encoding process is started via the advanced window
+     */
     public void processAdvanced(){
         aewp=this;
         Globals.cancelled=false;

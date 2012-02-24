@@ -26,6 +26,9 @@ public class AudioEntry implements EncoderEntry{
     public int bitrate,channels,samplingRate,volume;
     public float duration,offset;
 
+    /*
+     * sets up the current format settings
+     */
     public void saveSet(String fin,String fout,String selectedFormat){
         this.fin=fin;
         if(selectedFormat.equals("MP3 File (.mp3)")){
@@ -74,6 +77,9 @@ public class AudioEntry implements EncoderEntry{
         }
     }
 
+    /*
+     * sets up the current format settings also using the advanced options
+     */
     public void saveSetAdvanced(String fin,String fout,String selectedFormat,int bitrate,int channels,int samplingRate,int volume,float offset,float duration){
         saveSet(fin,fout,selectedFormat);
         this.fout=fout;

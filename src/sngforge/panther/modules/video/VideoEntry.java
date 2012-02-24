@@ -26,6 +26,10 @@ public class VideoEntry implements EncoderEntry {
     public int aBitrate, aChannels, aSamplingRate, aVolume, vBitrate, fps, height, width;
     public float duration, offset;
 
+    /*
+     * saves the setting for the current video encoding process
+     * these may come from the presets and/or the settings user specifies in the options window of the conversion task
+     */
     public void saveSet(String aCodec, String vCodec, String fin, String fout, String format, int aBitrate, int aChannels, int aSamplingRate, int aVolume, int vBitrate, int fps, int height, int width, float duration, float offset){
         this.aCodec=aCodec;
         this.vCodec=vCodec;

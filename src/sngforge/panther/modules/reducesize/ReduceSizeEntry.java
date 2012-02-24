@@ -28,6 +28,9 @@ public class ReduceSizeEntry implements EncoderEntry{
     public boolean copyTags;
     public boolean openFolder;
 
+    /*
+     * saves the details for the reduuction of files in the current encoding task
+     */
     public void saveSet(Object files[],int bitrate,String outFolder,boolean copyTags,boolean openFolder){
         this.files=files;
         this.bitrate=bitrate;

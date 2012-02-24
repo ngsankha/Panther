@@ -23,6 +23,9 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
+/*
+ * this class handles the presets
+ */
 public class PresetData {
 
     public Properties p;
@@ -31,6 +34,9 @@ public class PresetData {
         p=new Properties();
     }
 
+    /*
+     * loads the in-built set of presets that comes with Panther
+     */
     public void loadPresetData(String desc) {
         File presetDir = new File("./presets/");
         File presets[] = presetDir.listFiles();
@@ -48,6 +54,9 @@ public class PresetData {
         }
     }
 
+    /*
+     * loads the preset from an external file
+     */
     public void loadPresetData(File file){
         try{
             p.loadFromXML(new FileInputStream(file));
@@ -57,6 +66,9 @@ public class PresetData {
         }
     }
 
+    /*
+     * gets the presets list as an array
+     */
     public static Object[] loadPresetsList() throws Exception{
         ArrayList entries=new ArrayList();
         File presetDir=new File("./presets/");
