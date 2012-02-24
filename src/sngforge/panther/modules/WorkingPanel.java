@@ -20,6 +20,9 @@ package sngforge.panther.modules;
 
 import javax.swing.JPanel;
 
+/*
+ * the base class for an progress showing class on screen during an encoding process
+ */
 public class WorkingPanel extends JPanel{
 
     public void setProgress(int p){};

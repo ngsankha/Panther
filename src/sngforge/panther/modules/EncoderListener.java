@@ -21,6 +21,9 @@ package sngforge.panther.modules;
 import it.sauronsoftware.jave.EncoderProgressListener;
 import it.sauronsoftware.jave.MultimediaInfo;
 
+/*
+ * updates the progress on screen
+ */
 public class EncoderListener implements EncoderProgressListener{
 
     WorkingPanel master;
@@ -29,6 +32,9 @@ public class EncoderListener implements EncoderProgressListener{
         System.err.println(msg);
     }
 
+    /*
+     * updates the progress bar
+     */
     public void progress(int p){
         master.setProgress(p/10);
     }

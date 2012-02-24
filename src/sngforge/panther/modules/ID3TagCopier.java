@@ -24,6 +24,9 @@ import sngforge.panther.Globals;
 
 public class ID3TagCopier {
 
+    /*
+     * copis the ID3 tags of an MP3 file to another after the encoding process
+     */
     public static void copyTags(String src,String dst){
         try{
             MP3File fsrc=new MP3File(new File(src));

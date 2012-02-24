@@ -19,6 +19,8 @@
 
 package sngforge.panther.modules;
 
-
+/*
+ * interface that implies that this will be an encoder's basic class
+ */
 public interface EncoderEntry {
 }
