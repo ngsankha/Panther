@@ -135,6 +135,9 @@ public class VideoPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_cancelActionPerformed
 
+    /*
+     * loads the values from the preset selected and then launches the main conversion options window
+     */
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         Globals.pd = new PresetData();
         Globals.pd.loadPresetData((String) presetsList.getSelectedValue());
@@ -145,6 +148,9 @@ public class VideoPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_nextActionPerformed
 
+    /*
+     * allows you to browse a custom presets file
+     */
     private void browsePresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browsePresetActionPerformed
         Globals.pd = new PresetData();
         JFileChooser jfc=new JFileChooser();
@@ -181,6 +187,9 @@ public class VideoPanel extends javax.swing.JPanel {
         return fullDescription;
     }
     
+    /*
+     * loads the list of inbuilt presets
+     */
     private void loadVideoPresets() throws Exception {
         presetsList.setListData(PresetData.loadPresetsList());
     }

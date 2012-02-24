@@ -182,6 +182,9 @@ public class SimpleAudioPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * the following 2 methods are for browsing the input and output files
+     */
     private void browseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseInputActionPerformed
         JFileChooser jfc=new JFileChooser();
         jfc.showOpenDialog(this);
@@ -206,6 +209,9 @@ public class SimpleAudioPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_cancelActionPerformed
 
+    /*
+     * starts the encoding process
+     */
     private void encodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encodeActionPerformed
         AudioEntry sae=new AudioEntry();
         sae.saveSet(inputFile.getText(), outputFile.getText(), (String)formatList.getSelectedItem());
@@ -219,6 +225,9 @@ public class SimpleAudioPanel extends javax.swing.JPanel {
         saewp.processSimple();
     }//GEN-LAST:event_encodeActionPerformed
 
+    /*
+     * launches the advancedaudio actions panel
+     */
     private void advancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedActionPerformed
         Globals.mainFrame.setVisible(false);
         Globals.mainFrame.remove(Globals.scrollPane);

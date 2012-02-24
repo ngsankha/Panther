@@ -363,6 +363,9 @@ public class VideoSettingsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+     * the following 2 methods selects the input and output files
+     */
     private void browseOutputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseOutputActionPerformed
         JFileChooser jfc = new JFileChooser();
         jfc.showSaveDialog(this);
@@ -397,6 +400,9 @@ public class VideoSettingsPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
+    /*
+     * starts the video encoding process
+     */
     private void encodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encodeActionPerformed
         VideoEntry ve=new VideoEntry();
         int channel;
@@ -424,7 +430,10 @@ public class VideoSettingsPanel extends javax.swing.JPanel {
         vewp.process();
     }//GEN-LAST:event_encodeActionPerformed
 
-    public void loadDefaults(){
+    /*
+     * loads the default values from the preset's XML file
+     */
+    private void loadDefaults(){
         videoFormat.setText(Globals.pd.p.getProperty("desc"));
         bitrate.setText(Globals.pd.p.getProperty("audioBitrate"));
         channels.setSelectedIndex(Integer.parseInt(Globals.pd.p.getProperty("audioChannels")));
