@@ -156,7 +156,7 @@ public class MainPanel extends javax.swing.JPanel {
      * launches the help
      */
     private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
-        sngforge.jelp.Main.launch();
+        //sngforge.jelp.Main.launch();
     }//GEN-LAST:event_helpActionPerformed
 
     /*
