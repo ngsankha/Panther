@@ -49,6 +49,13 @@ public class Main {
                 Globals.mainFrame.setSize(750,500);
                 Globals.mainFrame.setVisible(true);
             }});
+            SwingWorker sw=new SwingWorker(){
+                protected Object doInBackground(){
+                    Updater.update();
+                    return null;
+                }
+            };
+            sw.execute();
         }catch(Exception e){
             System.err.println(e);
             JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);

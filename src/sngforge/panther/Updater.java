@@ -28,7 +28,7 @@ import sngforge.jupdater.JUpdater;
  */
 public class Updater {
     
-    public void update(){
+    public static void update(){
         JUpdater updater;
         try{
             updater=new JUpdater("version.xml","http://sankha93.github.com/Panther/update.xml");
