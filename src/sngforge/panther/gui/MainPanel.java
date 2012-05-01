@@ -50,6 +50,7 @@ public class MainPanel extends javax.swing.JPanel {
         close = new javax.swing.JButton();
         about = new javax.swing.JButton();
         reduceSize = new javax.swing.JButton();
+        prefs = new javax.swing.JButton();
 
         infoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/go-jump.png"))); // NOI18N
         infoLabel.setText("<html>Panther is a media encoder that you can use to encode media files from one format to the other and reduce the size of music files.<br> It is fast simple and easy to use.<br><br> Please select the task that you want to perform from the following.");
@@ -109,6 +110,14 @@ public class MainPanel extends javax.swing.JPanel {
             }
         });
 
+        prefs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/applications-system.png"))); // NOI18N
+        prefs.setText("Preferences");
+        prefs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prefsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,24 +125,26 @@ public class MainPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(convertVideo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
-                    .addComponent(reduceSize, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
-                    .addComponent(convertAudio, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
-                    .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(convertVideo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(reduceSize, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(convertAudio)
+                    .addComponent(infoLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(help)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(about)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(prefs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(close))
-                    .addComponent(batchConversion, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE))
+                    .addComponent(batchConversion))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(infoLabel)
+                .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(convertAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,11 +154,12 @@ public class MainPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(batchConversion, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(help)
-                        .addComponent(about))
-                    .addComponent(close))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(about, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(close, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(prefs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -194,6 +206,11 @@ public class MainPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_convertVideoActionPerformed
 
+    private void prefsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefsActionPerformed
+        PreferencesDialog prefDlg=new PreferencesDialog(Globals.mainFrame,true);
+        prefDlg.setVisible(true);
+    }//GEN-LAST:event_prefsActionPerformed
+
     /*
      * batch processing feature
      * under development
@@ -210,6 +227,7 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JButton convertVideo;
     private javax.swing.JButton help;
     private javax.swing.JLabel infoLabel;
+    private javax.swing.JButton prefs;
     private javax.swing.JButton reduceSize;
     // End of variables declaration//GEN-END:variables
 

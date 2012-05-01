@@ -144,6 +144,7 @@ public class ReduceSizeWorkingPanel extends WorkingPanel{
     /*
      * upadtes the progress bar on screen
      */
+    @Override
     public void setProgress(int val){
         currProgress.setValue(val);
     }
@@ -194,7 +195,7 @@ public class ReduceSizeWorkingPanel extends WorkingPanel{
                     System.err.println(e);
                 }}
                     Globals.report=Globals.report+"\nErrors:\n\n\n";
-                    if(Globals.errorList.size()!=0){
+                    if(!Globals.errorList.isEmpty()){
                         for(int i=0;i<Globals.errorList.size();i++)
                         Globals.report=Globals.report+(Exception)Globals.errorList.get(i);
                     }

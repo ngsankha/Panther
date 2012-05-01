@@ -28,6 +28,9 @@ import sngforge.jupdater.JUpdater;
  */
 public class Updater {
     
+    /*
+     * call this method to check for new updates
+     */
     public static void update(){
         JUpdater updater;
         try{
