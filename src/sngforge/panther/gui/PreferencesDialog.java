@@ -18,11 +18,20 @@
  */
 package sngforge.panther.gui;
 
+import java.util.Properties;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import sngforge.panther.Globals;
+import sngforge.panther.Preferences;
+
 /**
  * This class checks for updates to the newer version of Panther
  * @author Sankha
  */
 public class PreferencesDialog extends javax.swing.JDialog {
+    
+    LFPanel lfp;
 
     /**
      * Creates new form PreferencesDialog
@@ -50,6 +59,11 @@ public class PreferencesDialog extends javax.swing.JDialog {
         setTitle("Preferences");
 
         closeBtn.setText("Close");
+        closeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
         container.setLayout(containerLayout);
@@ -59,7 +73,7 @@ public class PreferencesDialog extends javax.swing.JDialog {
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+            .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -71,7 +85,7 @@ public class PreferencesDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 321, Short.MAX_VALUE)
+                        .addGap(0, 456, Short.MAX_VALUE)
                         .addComponent(closeBtn)))
                 .addContainerGap())
         );
@@ -87,6 +101,20 @@ public class PreferencesDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+        Globals.prefs=new Properties();
+        lfp.savePrefs();
+        Preferences.savePreferences();
+        try{
+            UIManager.setLookAndFeel(Globals.prefs.getProperty("laf"));
+            SwingUtilities.updateComponentTreeUI(Globals.mainFrame);
+        } catch (Exception e){
+            e.printStackTrace(System.err);
+            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+        }
+        dispose();
+    }//GEN-LAST:event_closeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,7 +167,8 @@ public class PreferencesDialog extends javax.swing.JDialog {
     }
     
     public final void loadTabs(){
-        tabs.addTab("Themes", new LFPanel());
+        lfp=new LFPanel();
+        tabs.addTab("Themes", lfp);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeBtn;

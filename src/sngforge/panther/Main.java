@@ -36,9 +36,18 @@ public class Main {
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
         try{
+            //loading the preferences
+            File f=new File(System.getProperty("user.home")+"/.panther/prefs.xml");
+            if(!f.exists())
+                Preferences.createPreferences();
+            Preferences.loadPreferences();
             //setting up the look and feel
-            UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceRavenGraphiteGlassLookAndFeel");
-            SwingUtilities.invokeLater(new Runnable(){
+            UIManager.setLookAndFeel(Globals.prefs.getProperty("laf","org.jvnet.substance.skin.SubstanceRavenGraphiteGlassLookAndFeel"));
+        }catch(Exception e){
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+        }
+        SwingUtilities.invokeLater(new Runnable(){
             public void run(){
                 //creating the main parent window
                 Globals.mainFrame=new JFrame("Panther");
@@ -56,10 +65,6 @@ public class Main {
                 }
             };
             sw.execute();
-        }catch(Exception e){
-            System.err.println(e);
-            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
     
     /*

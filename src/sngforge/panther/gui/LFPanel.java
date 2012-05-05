@@ -21,6 +21,7 @@ package sngforge.panther.gui;
 import java.util.Enumeration;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import sngforge.panther.Globals;
 
 /**
  * The Look and Feel Panel
@@ -28,6 +29,8 @@ import javax.swing.JOptionPane;
  */
 public class LFPanel extends javax.swing.JPanel {
 
+    Properties p;
+    
     /**
      * Creates new form LFPanel
      */
@@ -37,16 +40,27 @@ public class LFPanel extends javax.swing.JPanel {
     }
     
     final void loadLAFs(){
-        Properties p=new Properties();
+        p=new Properties();
+        String curr="";
         try{
             p.loadFromXML(getClass().getResourceAsStream("/sngforge/panther/resources/lafs.xml"));
             Enumeration e=p.propertyNames();
-            for(;e.hasMoreElements();)
-                lafList.addItem(e.nextElement());
+            for(;e.hasMoreElements();){
+                String name=(String)e.nextElement();
+                lafList.addItem(name);
+                if(p.getProperty(name).equals(Globals.prefs.getProperty("laf")))
+                    curr=name;
+            }
+            lafList.setSelectedItem(curr);
+            
         }catch(Exception e){
             e.printStackTrace(System.err);
             JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    void savePrefs(){
+        Globals.prefs.put("laf", p.getProperty(lafList.getSelectedItem().toString()));
     }
 
     /**

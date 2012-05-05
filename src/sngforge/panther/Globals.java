@@ -19,6 +19,7 @@
 package sngforge.panther;
 
 import java.util.ArrayList;
+import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import sngforge.panther.gui.ReportPanel;
@@ -30,6 +31,7 @@ import sngforge.panther.modules.video.PresetData;
  * Stores all the global (static) variables used universally in the application
  */
 public class Globals {
+    public static Properties prefs;
     public static JFrame mainFrame;
     public static JScrollPane scrollPane;
     public static EncoderEntry ee;

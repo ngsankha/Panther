@@ -3,5 +3,5 @@
 <properties>
 <comment>List of available LAFs</comment>
 <entry key="Raven Graphite">org.jvnet.substance.skin.SubstanceRavenGraphiteGlassLookAndFeel</entry>
-<entry key="Business">org.jvnet.substance.skin.SubstanceBusinessGlassLookAndFeel</entry>
+<entry key="Business">org.jvnet.substance.skin.SubstanceBusinessLookAndFeel</entry>
 </properties>
