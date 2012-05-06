@@ -34,10 +34,10 @@ public class Updater {
     public static void update(){
         JUpdater updater;
         try{
-            updater=new JUpdater("version.xml","http://sankha93.github.com/Panther/update.xml");
+            updater=new JUpdater("update.xml","http://sankha93.github.com/Panther/update.xml");
             if(updater.isUpdateRequired()){
                 System.out.println("Update for Panther "+updater.getServerVersion()+" is available.");
-                String text="<html>A new update is available. Would you like to update?<br/>"+updater.getUpdateDetails()+"</html>";
+                String text="<html>A new update is available. Would you like to update?<br/><br/>"+updater.getUpdateDetails()+"</html>";
                 int selected=JOptionPane.showConfirmDialog(null, text, "Panther - Update", JOptionPane.YES_NO_OPTION);
                 if(selected==JOptionPane.YES_OPTION){
                     Desktop d=Desktop.getDesktop();

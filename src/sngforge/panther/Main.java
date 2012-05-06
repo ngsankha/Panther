@@ -57,14 +57,8 @@ public class Main {
                 Globals.mainFrame.add(Globals.scrollPane);
                 Globals.mainFrame.setSize(750,500);
                 Globals.mainFrame.setVisible(true);
+                Updater.update();
             }});
-            SwingWorker sw=new SwingWorker(){
-                protected Object doInBackground(){
-                    Updater.update();
-                    return null;
-                }
-            };
-            sw.execute();
     }
     
     /*
