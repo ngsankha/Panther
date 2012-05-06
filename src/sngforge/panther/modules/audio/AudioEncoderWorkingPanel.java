@@ -146,6 +146,7 @@ public class AudioEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
     /*
      * updates the progress bar on screen
      */
+    @Override
     public void setProgress(int val){
         currProgress.setValue(val);
     }
@@ -177,12 +178,11 @@ public class AudioEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
                             e.encode(f, fout, ae, ael);
                             Globals.report=Globals.report+"Input:"+f.getAbsolutePath()+"\nOutput:"+fout.getAbsolutePath()+"\nEncoded Successfully!\n\n";
                         }catch(Exception ex){
-                            ex.printStackTrace();
                             System.err.println(ex);
                             Globals.errorList.add(ex);
                         }                        
                     Globals.report=Globals.report+"\nErrors:\n\n\n";
-                    if(Globals.errorList.size()!=0){
+                    if(!Globals.errorList.isEmpty()){
                         for(int i=0;i<Globals.errorList.size();i++)
                         Globals.report=Globals.report+(Exception)Globals.errorList.get(i);
                     }
@@ -236,7 +236,7 @@ public class AudioEncoderWorkingPanel extends sngforge.panther.modules.WorkingPa
                             Globals.errorList.add(ex);
                         }
                     Globals.report=Globals.report+"\nErrors:\n\n\n";
-                    if(Globals.errorList.size()!=0){
+                    if(!Globals.errorList.isEmpty()){
                         for(int i=0;i<Globals.errorList.size();i++)
                         Globals.report=Globals.report+(Exception)Globals.errorList.get(i);
                     }

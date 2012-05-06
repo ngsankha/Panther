@@ -30,7 +30,6 @@ public class MainPanel extends javax.swing.JPanel {
     /** Creates new form MainPanel */
     public MainPanel() {
         initComponents();
-        hideBatchButton();
     }
 
     /** This method is called from within the constructor to
@@ -76,6 +75,11 @@ public class MainPanel extends javax.swing.JPanel {
         batchConversion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/utilities-terminal.png"))); // NOI18N
         batchConversion.setText("<html><b>Batch Conversion</b><br><br>Click here to write scripts to encode multiple files at once.");
         batchConversion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        batchConversion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                batchConversionActionPerformed(evt);
+            }
+        });
 
         help.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/help-browser.png"))); // NOI18N
         help.setText("Help");
@@ -211,13 +215,16 @@ public class MainPanel extends javax.swing.JPanel {
         prefDlg.setVisible(true);
     }//GEN-LAST:event_prefsActionPerformed
 
-    /*
-     * batch processing feature
-     * under development
-     */
-    public void hideBatchButton(){
-        batchConversion.setVisible(false);
-    }
+    private void batchConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batchConversionActionPerformed
+        Globals.mainFrame.setVisible(false);
+        Globals.mainFrame.remove(Globals.scrollPane);
+        ScriptEditor editor=new ScriptEditor();
+        editor.initSyntaxHighlighter();
+        Globals.scrollPane=new JScrollPane(editor);
+        Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setVisible(true);
+    }//GEN-LAST:event_batchConversionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton about;
