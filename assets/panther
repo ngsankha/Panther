@@ -18,4 +18,6 @@
 #
 #
 
+dir=$(dirname $0)
+cd $dir
 java -jar Panther.jar
