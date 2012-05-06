@@ -18,7 +18,14 @@
  */
 package sngforge.panther.gui;
 
+import java.io.*;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import jsyntaxpane.DefaultSyntaxKit;
+import sngforge.panther.Globals;
 
 /**
  * the script editor panel
@@ -26,6 +33,8 @@ import jsyntaxpane.DefaultSyntaxKit;
  */
 public class ScriptEditor extends javax.swing.JPanel {
 
+    File curr;
+    
     /**
      * Creates new form ScriptEditor
      */
@@ -48,50 +57,70 @@ public class ScriptEditor extends javax.swing.JPanel {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        openBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
+        saveAsBtn = new javax.swing.JButton();
+        runBtn = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         script = new javax.swing.JEditorPane();
 
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-open.png"))); // NOI18N
-        jButton1.setText("Open");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        openBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-open.png"))); // NOI18N
+        openBtn.setText("Open");
+        openBtn.setFocusable(false);
+        openBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        openBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        openBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openBtnActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(openBtn);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-save.png"))); // NOI18N
-        jButton2.setText("Save");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-save.png"))); // NOI18N
+        saveBtn.setText("Save");
+        saveBtn.setFocusable(false);
+        saveBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        saveBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(saveBtn);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-save-as.png"))); // NOI18N
-        jButton3.setText("Save As");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        saveAsBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-save-as.png"))); // NOI18N
+        saveAsBtn.setText("Save As");
+        saveAsBtn.setFocusable(false);
+        saveAsBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        saveAsBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        saveAsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsBtnActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(saveAsBtn);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-redo.png"))); // NOI18N
-        jButton4.setText("Run");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        runBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-redo.png"))); // NOI18N
+        runBtn.setText("Run");
+        runBtn.setFocusable(false);
+        runBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        runBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(runBtn);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
-        jButton5.setText("Cancel");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
+        cancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
+        cancelBtn.setText("Cancel");
+        cancelBtn.setFocusable(false);
+        cancelBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cancelBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(cancelBtn);
 
         jScrollPane1.setViewportView(script);
 
@@ -110,14 +139,96 @@ public class ScriptEditor extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void openBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openBtnActionPerformed
+        JFileChooser jfc=new JFileChooser();
+        FileFilter filter;
+        filter = createFileFilter("Javascript Files",true, "js");
+        jfc.setFileFilter(filter);
+        jfc.showOpenDialog(this);
+        File f=jfc.getSelectedFile();
+        if(f!=null){
+            curr=f;
+            try{
+                BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+                script.read(br, null);
+                Globals.mainFrame.setTitle("Panther - "+curr.getName());
+                br.close();
+            } catch(Exception e){
+                System.err.println(e);
+                JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_openBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        if(curr!=null){
+            try{
+                BufferedWriter bw=new BufferedWriter(new FileWriter(curr));
+                bw.write(script.getText());
+                bw.close();
+            } catch(Exception e){
+                System.err.println(e);
+                JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void saveAsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsBtnActionPerformed
+        JFileChooser jfc=new JFileChooser();
+        FileFilter filter;
+        filter = createFileFilter("Javascript Files",true, "js");
+        jfc.setFileFilter(filter);
+        jfc.showSaveDialog(this);
+        File f=new File(jfc.getSelectedFile().getAbsolutePath()+".js");
+        if(f!=null){
+            curr=f;
+            try{
+                BufferedWriter bw=new BufferedWriter(new FileWriter(curr));
+                bw.write(script.getText());
+                Globals.mainFrame.setTitle("Panther - "+curr.getName());
+                bw.close();
+            } catch(Exception e){
+                System.err.println(e);
+                JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_saveAsBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        Globals.mainFrame.setVisible(false);
+        Globals.mainFrame.remove(Globals.scrollPane);
+        Globals.scrollPane=new JScrollPane(new MainPanel());
+        Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setVisible(true);
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
+    {
+        if (showExtensionInDescription)
+        description = createFileNameFilterDescriptionFromExtensions(description, extensions);
+        return new FileNameExtensionFilter(description, extensions);
+    }
+    private String createFileNameFilterDescriptionFromExtensions(String description, String[] extensions)
+    {
+        String fullDescription = (description == null) ? "(" : description + " (";
+        fullDescription += "." + extensions[0];
+        for (int i = 1; i < extensions.length; i++) {
+            fullDescription += ", .";
+            fullDescription += extensions[i];
+        }
+        fullDescription += ")";
+        return fullDescription;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton openBtn;
+    private javax.swing.JButton runBtn;
+    private javax.swing.JButton saveAsBtn;
+    private javax.swing.JButton saveBtn;
     private javax.swing.JEditorPane script;
     // End of variables declaration//GEN-END:variables
 }
