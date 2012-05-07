@@ -18,17 +18,16 @@
  */
 package sngforge.panther.script;
 
-import it.sauronsoftware.jave.AudioAttributes;
-import it.sauronsoftware.jave.Encoder;
-import it.sauronsoftware.jave.EncodingAttributes;
+import it.sauronsoftware.jave.*;
 import java.io.File;
 import javax.swing.JOptionPane;
+import sngforge.panther.modules.ID3TagCopier;
 
 /**
  * AudioEncoder class for use with Javascript
  * @author Sankha
  */
-public class AudioEncoder {
+public class Reducer {
     
     File in,out;
     AudioAttributes aa;
@@ -39,7 +38,7 @@ public class AudioEncoder {
      * @param in the input file
      * @param out the output file
      */
-    public AudioEncoder(File in, File out){
+    public Reducer(File in, File out){
         this.in=in;
         this.out=out;
         aa=new AudioAttributes();
@@ -48,14 +47,18 @@ public class AudioEncoder {
     
     /*
      * begins the encoding process
+     * @param copyID3 true if the ID3 tags are to be copied, false otherwise
      */
-    public void encode(){
+    public void encode(boolean copyID3){
         Utilities u=new Utilities();
         u.println("Encoding file: "+in.getAbsolutePath());
         Encoder e=new Encoder();
         ea.setAudioAttributes(aa);
+        setFormat("mp3");
         try{
             e.encode(in , out, ea, new ProgressListener());
+            if(copyID3)
+                ID3TagCopier.copyTags(in.getAbsolutePath(),out.getAbsolutePath());
         } catch(Exception ex){
             System.err.println(ex);
             JOptionPane.showMessageDialog(null, ex, "Panther - Error", JOptionPane.ERROR_MESSAGE);
@@ -63,19 +66,20 @@ public class AudioEncoder {
     }
     
     /*
-     * sets the duration of the output file
-     * @param duration the duration of the output in seconds
+     * gets the bitrate of the input file
+     * @return the bitrate of the input file in kbps
      */
-    public void setDuration(float duration){
-        ea.setDuration(duration);
-    }
-    
-    /*
-     * set the offset of the file during the encoding process. The offset number of seconds will be skipped and then the encoding will start
-     * @param offset the offset time in seconds
-     */
-    public void setOffset(float offset){
-        ea.setOffset(offset);
+    public int getBitrate(){
+        AudioInfo ai=null;
+        try{
+            Encoder e=new Encoder();
+            MultimediaInfo mi=e.getInfo(in);
+            ai=mi.getAudio();
+        }catch(Exception e){
+            System.err.println(e);
+            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return ai.getBitRate();
     }
     
     /*
@@ -86,35 +90,12 @@ public class AudioEncoder {
         aa.setBitRate(bitrate);
     }
     
-    /*
-     * the sampling rate of the output file
-     * @param sampling the sampling rate in Hz
-     */
-    public void setSamplingRate(int sampling){
-        aa.setSamplingRate(sampling);
-    }
-    
-    /*
-     * the number of channels of the output file
-     * @param channels the number of channels (1=mono, 2=stereo)
-     */
-    public void setChannels(int channels){
-        aa.setChannels(channels);
-    }
-    
-    /*
-     * the volume of the output file
-     * @param volume the volume of the output file
-     */
-    public void setVolume(int volume){
-        aa.setBitRate(volume);
-    }
     
     /*
      * sets the format of the output file
      * @param format the format of the output file
      */
-    public void setFormat(String format){
+    private void setFormat(String format){
         ea.setFormat(format);
     }
 }

@@ -91,7 +91,7 @@ public class OutputPanel extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton closeBtn;
+    public javax.swing.JButton closeBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JEditorPane output;
     // End of variables declaration//GEN-END:variables

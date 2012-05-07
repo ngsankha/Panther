@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import jsyntaxpane.DefaultSyntaxKit;
 import sngforge.panther.Globals;
+import sngforge.panther.script.Utilities;
 
 /**
  * the script editor panel
@@ -213,6 +214,7 @@ public class ScriptEditor extends javax.swing.JPanel {
 
     private void runBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runBtnActionPerformed
         if(curr!=null){
+            saveBtnActionPerformed(evt);
             Globals.mainFrame.setVisible(false);
             Globals.mainFrame.remove(Globals.scrollPane);
             final OutputPanel output=new OutputPanel();
@@ -222,7 +224,11 @@ public class ScriptEditor extends javax.swing.JPanel {
             //output.runScript(curr);
             SwingWorker sw=new SwingWorker(){
                 protected Object doInBackground(){
+                    Utilities u=new Utilities();
+                    output.closeBtn.setEnabled(false);
                     output.runScript(curr);
+                    u.println("-- Done --");
+                    output.closeBtn.setEnabled(true);
                     return null;
                 }
             };
