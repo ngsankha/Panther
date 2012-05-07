@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 import sngforge.panther.modules.ID3TagCopier;
 
 /**
- * AudioEncoder class for use with Javascript
+ * Reducer class for use with Javascript
  * @author Sankha
  */
 public class Reducer {
