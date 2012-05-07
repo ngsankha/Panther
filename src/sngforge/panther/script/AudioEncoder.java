@@ -22,7 +22,6 @@ import it.sauronsoftware.jave.AudioAttributes;
 import it.sauronsoftware.jave.Encoder;
 import it.sauronsoftware.jave.EncodingAttributes;
 import java.io.File;
-import javax.swing.JOptionPane;
 
 /**
  * AudioEncoder class for use with Javascript
@@ -58,7 +57,7 @@ public class AudioEncoder {
             e.encode(in , out, ea, new ProgressListener());
         } catch(Exception ex){
             System.err.println(ex);
-            JOptionPane.showMessageDialog(null, ex, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+            u.println("Error: "+ex);
         }
     }
     

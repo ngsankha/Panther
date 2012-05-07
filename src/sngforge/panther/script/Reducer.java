@@ -20,7 +20,6 @@ package sngforge.panther.script;
 
 import it.sauronsoftware.jave.*;
 import java.io.File;
-import javax.swing.JOptionPane;
 import sngforge.panther.modules.ID3TagCopier;
 
 /**
@@ -61,7 +60,7 @@ public class Reducer {
                 ID3TagCopier.copyTags(in.getAbsolutePath(),out.getAbsolutePath());
         } catch(Exception ex){
             System.err.println(ex);
-            JOptionPane.showMessageDialog(null, ex, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+            u.println("Error: "+ex);
         }
     }
     
@@ -70,6 +69,7 @@ public class Reducer {
      * @return the bitrate of the input file in kbps
      */
     public int getBitrate(){
+        Utilities u=new Utilities();
         AudioInfo ai=null;
         try{
             Encoder e=new Encoder();
@@ -77,7 +77,7 @@ public class Reducer {
             ai=mi.getAudio();
         }catch(Exception e){
             System.err.println(e);
-            JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+            u.println("Error: "+e);
         }
         return ai.getBitRate();
     }

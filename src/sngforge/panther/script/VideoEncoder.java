@@ -18,10 +18,7 @@
  */
 package sngforge.panther.script;
 
-import it.sauronsoftware.jave.AudioAttributes;
-import it.sauronsoftware.jave.EncodingAttributes;
-import it.sauronsoftware.jave.VideoAttributes;
-import it.sauronsoftware.jave.VideoSize;
+import it.sauronsoftware.jave.*;
 import java.io.File;
 
 /**
@@ -144,5 +141,22 @@ public class VideoEncoder {
      */
     public void setAudioCodec(String codec){
         aa.setCodec(codec);
+    }
+    
+    /*
+     * begins the encoding process
+     */
+    public void encode(){
+        Utilities u=new Utilities();
+        u.println("Encoding file: "+in.getAbsolutePath());
+        Encoder e=new Encoder();
+        ea.setAudioAttributes(aa);
+        ea.setVideoAttributes(va);
+        try{
+            e.encode(in , out, ea, new ProgressListener());
+        } catch(Exception ex){
+            System.err.println(ex);
+            u.println("Error: "+ex);
+        }
     }
 }
