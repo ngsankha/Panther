@@ -20,6 +20,7 @@ package sngforge.panther;
 
 import java.util.ArrayList;
 import java.util.Properties;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import sngforge.panther.gui.ReportPanel;
@@ -42,4 +43,5 @@ public class Globals {
     public static ReportPanel rp;
     public static JScrollPane tmp;
     public static PresetData pd;
+    public static JEditorPane output;
 }

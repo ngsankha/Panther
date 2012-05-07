@@ -18,26 +18,19 @@
  */
 package sngforge.panther.script;
 
-import it.sauronsoftware.jave.EncoderProgressListener;
-import it.sauronsoftware.jave.MultimediaInfo;
+import sngforge.panther.Globals;
 
-/*
- * updates the progress on screen in a script
+/**
+ * Provides common utility functions for scripts
+ * @author Sankha
  */
-class ProgressListener implements EncoderProgressListener{
-
-    public void message(String msg){
-        System.err.println("ScriptEngine: "+msg);
+public class Utilities {
+    
+    public void print(String str){
+        Globals.output.setText(Globals.output.getText()+str);
     }
-
-    /*
-     * updates the progress bar
-     */
-    public void progress(int p){
-        Utilities u=new Utilities();
-        u.println("Processed: "+(p/10)+"%");
+    
+    public void println(String str){
+        Globals.output.setText(Globals.output.getText()+str+"\n");
     }
-
-    public void sourceInfo(MultimediaInfo mi){};
-
 }

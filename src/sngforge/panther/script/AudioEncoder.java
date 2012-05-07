@@ -107,4 +107,12 @@ public class AudioEncoder {
     public void setVolume(int volume){
         aa.setBitRate(volume);
     }
+    
+    /*
+     * sets the format of the output file
+     * @param format the format of the output file
+     */
+    public void setFormat(String format){
+        ea.setFormat(format);
+    }
 }

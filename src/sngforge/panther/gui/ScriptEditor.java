@@ -22,6 +22,7 @@ import java.io.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import jsyntaxpane.DefaultSyntaxKit;
@@ -108,6 +109,11 @@ public class ScriptEditor extends javax.swing.JPanel {
         runBtn.setFocusable(false);
         runBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         runBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        runBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runBtnActionPerformed(evt);
+            }
+        });
         jToolBar1.add(runBtn);
 
         cancelBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
@@ -171,7 +177,8 @@ public class ScriptEditor extends javax.swing.JPanel {
                 System.err.println(e);
                 JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
             }
-        }
+        } else
+            saveAsBtnActionPerformed(evt);
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void saveAsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsBtnActionPerformed
@@ -200,8 +207,29 @@ public class ScriptEditor extends javax.swing.JPanel {
         Globals.mainFrame.remove(Globals.scrollPane);
         Globals.scrollPane=new JScrollPane(new MainPanel());
         Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setTitle("Panther");
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void runBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runBtnActionPerformed
+        if(curr!=null){
+            Globals.mainFrame.setVisible(false);
+            Globals.mainFrame.remove(Globals.scrollPane);
+            final OutputPanel output=new OutputPanel();
+            Globals.scrollPane=new JScrollPane(output);
+            Globals.mainFrame.add(Globals.scrollPane);
+            Globals.mainFrame.setVisible(true);
+            //output.runScript(curr);
+            SwingWorker sw=new SwingWorker(){
+                protected Object doInBackground(){
+                    output.runScript(curr);
+                    return null;
+                }
+            };
+            sw.execute();
+        }else
+            JOptionPane.showMessageDialog(null, "Please save the script before you can run it!", "Panther - Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_runBtnActionPerformed
 
     private FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
     {

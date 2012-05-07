@@ -4,6 +4,14 @@
  */
 package sngforge.panther.gui;
 
+import java.io.File;
+import java.io.FileReader;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import sngforge.panther.Globals;
+
 /**
  *
  * @author Sankha
@@ -27,13 +35,19 @@ public class OutputPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        jButton2 = new javax.swing.JButton();
+        output = new javax.swing.JEditorPane();
+        closeBtn = new javax.swing.JButton();
 
-        jScrollPane1.setViewportView(jEditorPane1);
+        output.setEditable(false);
+        jScrollPane1.setViewportView(output);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
-        jButton2.setText("Close");
+        closeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
+        closeBtn.setText("Close");
+        closeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,8 +55,8 @@ public class OutputPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(closeBtn)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -50,14 +64,35 @@ public class OutputPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(closeBtn)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void closeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeBtnActionPerformed
+        Globals.mainFrame.setVisible(false);
+        Globals.mainFrame.remove(Globals.scrollPane);
+        Globals.scrollPane=new JScrollPane(new MainPanel());
+        Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setTitle("Panther");
+        Globals.mainFrame.setVisible(true);
+    }//GEN-LAST:event_closeBtnActionPerformed
+
+    public void runScript(File src){
+        Globals.output=output;
+        ScriptEngineManager factory=new ScriptEngineManager();
+        ScriptEngine engine=factory.getEngineByName("JavaScript");
+        try{
+            engine.eval(new FileReader(src));
+        }catch(Exception e){
+            System.err.println(e);
+                JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JButton closeBtn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JEditorPane output;
     // End of variables declaration//GEN-END:variables
 }
