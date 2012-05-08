@@ -23,6 +23,8 @@ import java.util.Properties;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import sngforge.panther.gui.ReportPanel;
 import sngforge.panther.modules.EncoderEntry;
 import sngforge.panther.modules.WorkingPanel;
@@ -44,4 +46,23 @@ public class Globals {
     public static JScrollPane tmp;
     public static PresetData pd;
     public static JEditorPane output;
+    
+    public static FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
+    {
+        if (showExtensionInDescription)
+        description = createFileNameFilterDescriptionFromExtensions(description, extensions);
+        return new FileNameExtensionFilter(description, extensions);
+    }
+    
+    public static String createFileNameFilterDescriptionFromExtensions(String description, String[] extensions)
+    {
+        String fullDescription = (description == null) ? "(" : description + " (";
+        fullDescription += "." + extensions[0];
+        for (int i = 1; i < extensions.length; i++) {
+            fullDescription += ", .";
+            fullDescription += extensions[i];
+        }
+        fullDescription += ")";
+        return fullDescription;
+    }
 }

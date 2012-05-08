@@ -28,7 +28,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import sngforge.panther.Globals;
 import sngforge.panther.modules.reducesize.ReduceSizeEntry;
 import sngforge.panther.modules.reducesize.ReduceSizeWorkingPanel;
@@ -233,7 +232,7 @@ public class ReduceSizePanel extends javax.swing.JPanel {
         JFileChooser jfc=new JFileChooser();
         jfc.setMultiSelectionEnabled(true);
         FileFilter filter;
-        filter = createFileFilter("MP3 Music Files",true, "mp3");
+        filter = Globals.createFileFilter("MP3 Music Files",true, "mp3");
         jfc.setFileFilter(filter);
         jfc.showOpenDialog(this);
         File f[]=jfc.getSelectedFiles();
@@ -299,24 +298,6 @@ public class ReduceSizePanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
         rswp.process();
     }//GEN-LAST:event_encodeActionPerformed
-
-    private FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
-    {
-        if (showExtensionInDescription)
-        description = createFileNameFilterDescriptionFromExtensions(description, extensions);
-        return new FileNameExtensionFilter(description, extensions);
-    }
-    private String createFileNameFilterDescriptionFromExtensions(String description, String[] extensions)
-    {
-        String fullDescription = (description == null) ? "(" : description + " (";
-        fullDescription += "." + extensions[0];
-        for (int i = 1; i < extensions.length; i++) {
-            fullDescription += ", .";
-            fullDescription += extensions[i];
-        }
-        fullDescription += ")";
-        return fullDescription;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;

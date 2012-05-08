@@ -25,7 +25,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import sngforge.panther.Globals;
 
 public class ReportPanel extends javax.swing.JPanel {
@@ -130,7 +129,7 @@ public class ReportPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         JFileChooser jfc=new JFileChooser();
         FileFilter filter;
-        filter = createFileFilter("Text Files",true, "txt");
+        filter = Globals.createFileFilter("Text Files",true, "txt");
         jfc.setFileFilter(filter);
         jfc.showSaveDialog(this);
         File f=new File(jfc.getSelectedFile().getAbsolutePath()+".txt");
@@ -155,23 +154,6 @@ public class ReportPanel extends javax.swing.JPanel {
         jTextArea1.setText(Globals.report);
     }
 
-    private FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
-    {
-        if (showExtensionInDescription)
-        description = createFileNameFilterDescriptionFromExtensions(description, extensions);
-        return new FileNameExtensionFilter(description, extensions);
-    }
-    private String createFileNameFilterDescriptionFromExtensions(String description, String[] extensions)
-    {
-        String fullDescription = (description == null) ? "(" : description + " (";
-        fullDescription += "." + extensions[0];
-        for (int i = 1; i < extensions.length; i++) {
-            fullDescription += ", .";
-            fullDescription += extensions[i];
-        }
-        fullDescription += ")";
-        return fullDescription;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton close;

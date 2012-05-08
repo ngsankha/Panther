@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import jsyntaxpane.DefaultSyntaxKit;
 import sngforge.panther.Globals;
 import sngforge.panther.script.Utilities;
@@ -150,7 +149,7 @@ public class ScriptEditor extends javax.swing.JPanel {
     private void openBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openBtnActionPerformed
         JFileChooser jfc=new JFileChooser();
         FileFilter filter;
-        filter = createFileFilter("Javascript Files",true, "js");
+        filter = Globals.createFileFilter("Javascript Files",true, "js");
         jfc.setFileFilter(filter);
         jfc.showOpenDialog(this);
         File f=jfc.getSelectedFile();
@@ -185,7 +184,7 @@ public class ScriptEditor extends javax.swing.JPanel {
     private void saveAsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsBtnActionPerformed
         JFileChooser jfc=new JFileChooser();
         FileFilter filter;
-        filter = createFileFilter("Javascript Files",true, "js");
+        filter = Globals.createFileFilter("Javascript Files",true, "js");
         jfc.setFileFilter(filter);
         jfc.showSaveDialog(this);
         File f=new File(jfc.getSelectedFile().getAbsolutePath()+".js");
@@ -236,24 +235,6 @@ public class ScriptEditor extends javax.swing.JPanel {
         }else
             JOptionPane.showMessageDialog(null, "Please save the script before you can run it!", "Panther - Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_runBtnActionPerformed
-
-    private FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
-    {
-        if (showExtensionInDescription)
-        description = createFileNameFilterDescriptionFromExtensions(description, extensions);
-        return new FileNameExtensionFilter(description, extensions);
-    }
-    private String createFileNameFilterDescriptionFromExtensions(String description, String[] extensions)
-    {
-        String fullDescription = (description == null) ? "(" : description + " (";
-        fullDescription += "." + extensions[0];
-        for (int i = 1; i < extensions.length; i++) {
-            fullDescription += ", .";
-            fullDescription += extensions[i];
-        }
-        fullDescription += ")";
-        return fullDescription;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelBtn;

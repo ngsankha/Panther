@@ -22,7 +22,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import sngforge.panther.Globals;
 import sngforge.panther.modules.video.PresetData;
 
@@ -155,7 +154,7 @@ public class VideoPanel extends javax.swing.JPanel {
         Globals.pd = new PresetData();
         JFileChooser jfc=new JFileChooser();
         FileFilter filter;
-        filter = createFileFilter("Panther Video Presets",true, "xml");
+        filter = Globals.createFileFilter("Panther Video Presets",true, "xml");
         jfc.setFileFilter(filter);
         jfc.showOpenDialog(this);
         if(jfc.getSelectedFile()!=null)
@@ -168,25 +167,7 @@ public class VideoPanel extends javax.swing.JPanel {
         Globals.mainFrame.add(Globals.scrollPane);
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_browsePresetActionPerformed
-
-    private FileFilter createFileFilter(String description,boolean showExtensionInDescription, String...extensions)
-    {
-        if (showExtensionInDescription)
-        description = createFileNameFilterDescriptionFromExtensions(description, extensions);
-        return new FileNameExtensionFilter(description, extensions);
-    }
-    private String createFileNameFilterDescriptionFromExtensions(String description, String[] extensions)
-    {
-        String fullDescription = (description == null) ? "(" : description + " (";
-        fullDescription += "." + extensions[0];
-        for (int i = 1; i < extensions.length; i++) {
-            fullDescription += ", .";
-            fullDescription += extensions[i];
-        }
-        fullDescription += ")";
-        return fullDescription;
-    }
-    
+   
     /*
      * loads the list of inbuilt presets
      */
