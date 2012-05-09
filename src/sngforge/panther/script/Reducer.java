@@ -57,7 +57,7 @@ public class Reducer {
         try{
             e.encode(in , out, ea, new ProgressListener());
             if(copyID3)
-                ID3TagCopier.copyTags(in.getAbsolutePath(),out.getAbsolutePath());
+                ID3TagCopier.copyTags(in,out);
         } catch(Exception ex){
             System.err.println(ex);
             u.println("Error: "+ex);

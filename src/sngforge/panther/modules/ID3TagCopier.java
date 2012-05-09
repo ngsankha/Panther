@@ -19,7 +19,7 @@
 package sngforge.panther.modules;
 
 import java.io.File;
-import org.farng.mp3.MP3File;
+import org.blinkenlights.jid3.MP3File;
 import sngforge.panther.Globals;
 
 public class ID3TagCopier {
@@ -27,19 +27,14 @@ public class ID3TagCopier {
     /*
      * copies the ID3 tags of an MP3 file to another after the encoding process
      */
-    public static void copyTags(String src,String dst){
+    public static void copyTags(File src,File dst){
         try{
-            MP3File fsrc=new MP3File(new File(src));
-            MP3File fdest=new MP3File(new File(dst));
-
-            fdest.setID3v1Tag(fsrc.getID3v1Tag());
-            fdest.setID3v2Tag(fsrc.getID3v2Tag());
-            fdest.setFilenameTag(fsrc.getFilenameTag());
-            fdest.setLyrics3Tag(fsrc.getLyrics3Tag());
-            fdest.save();
-            String dfile=dst.substring(0, dst.lastIndexOf(".mp3"))+".original.mp3";
-            File sf=new File(dfile);
-            sf.delete();
+            MP3File fsrc=new MP3File(src);
+            MP3File fdest=new MP3File(dst);
+            
+            fdest.setID3Tag(fsrc.getID3V1Tag());
+            fdest.setID3Tag(fsrc.getID3V2Tag());
+            fdest.sync();
         }catch(Exception e){
             System.err.println(e);
             Globals.errorList.add(e);

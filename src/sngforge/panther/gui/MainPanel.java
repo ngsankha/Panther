@@ -41,6 +41,12 @@ public class MainPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        moreMenu = new javax.swing.JPopupMenu();
+        tagEdit = new javax.swing.JMenuItem();
+        joinSplit = new javax.swing.JMenuItem();
+        networkConvert = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        preferences = new javax.swing.JMenuItem();
         infoLabel = new javax.swing.JLabel();
         convertAudio = new javax.swing.JButton();
         convertVideo = new javax.swing.JButton();
@@ -49,7 +55,34 @@ public class MainPanel extends javax.swing.JPanel {
         close = new javax.swing.JButton();
         about = new javax.swing.JButton();
         reduceSize = new javax.swing.JButton();
-        prefs = new javax.swing.JButton();
+        moreBtn = new javax.swing.JButton();
+
+        tagEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/document-properties.png"))); // NOI18N
+        tagEdit.setText("Tag Editor");
+        tagEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tagEditActionPerformed(evt);
+            }
+        });
+        moreMenu.add(tagEdit);
+
+        joinSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-cut.png"))); // NOI18N
+        joinSplit.setText("Join and Split Audio and Video files");
+        moreMenu.add(joinSplit);
+
+        networkConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/preferences-system-network-proxy.png"))); // NOI18N
+        networkConvert.setText("Convert from Network Stream");
+        moreMenu.add(networkConvert);
+        moreMenu.add(jSeparator1);
+
+        preferences.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/applications-system.png"))); // NOI18N
+        preferences.setText("Preferences");
+        preferences.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preferencesActionPerformed(evt);
+            }
+        });
+        moreMenu.add(preferences);
 
         infoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/go-jump.png"))); // NOI18N
         infoLabel.setText("<html>Panther is a media encoder that you can use to encode media files from one format to the other and reduce the size of music files.<br> It is fast simple and easy to use.<br><br> Please select the task that you want to perform from the following.");
@@ -73,7 +106,8 @@ public class MainPanel extends javax.swing.JPanel {
         });
 
         batchConversion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/utilities-terminal.png"))); // NOI18N
-        batchConversion.setText("<html><b>Batch Conversion</b><br><br>Click here to write scripts to encode multiple files at once.");
+        batchConversion.setText("<html><b>Batch Conversion</b><br><br>Click here to write scripts to customise the encoding process.");
+        batchConversion.setActionCommand("<html><b>Batch Conversion</b><br><br>Click here to write scripts to customise the encoding process.");
         batchConversion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         batchConversion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,11 +148,11 @@ public class MainPanel extends javax.swing.JPanel {
             }
         });
 
-        prefs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/applications-system.png"))); // NOI18N
-        prefs.setText("Preferences");
-        prefs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                prefsActionPerformed(evt);
+        moreBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/preferences-desktop.png"))); // NOI18N
+        moreBtn.setText("More...");
+        moreBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moreBtnMouseClicked(evt);
             }
         });
 
@@ -132,13 +166,13 @@ public class MainPanel extends javax.swing.JPanel {
                     .addComponent(convertVideo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(reduceSize, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(convertAudio)
-                    .addComponent(infoLabel)
+                    .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(help)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(about)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(prefs)
+                        .addComponent(moreBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(close))
                     .addComponent(batchConversion))
@@ -157,13 +191,13 @@ public class MainPanel extends javax.swing.JPanel {
                 .addComponent(convertVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(batchConversion, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(about, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(close, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(prefs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(moreBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -210,11 +244,6 @@ public class MainPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_convertVideoActionPerformed
 
-    private void prefsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefsActionPerformed
-        PreferencesDialog prefDlg=new PreferencesDialog(Globals.mainFrame,true);
-        prefDlg.setVisible(true);
-    }//GEN-LAST:event_prefsActionPerformed
-
     private void batchConversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batchConversionActionPerformed
         Globals.mainFrame.setVisible(false);
         Globals.mainFrame.remove(Globals.scrollPane);
@@ -225,6 +254,25 @@ public class MainPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_batchConversionActionPerformed
 
+    private void preferencesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preferencesActionPerformed
+        PreferencesDialog prefDlg=new PreferencesDialog(Globals.mainFrame,true);
+        prefDlg.setVisible(true);
+    }//GEN-LAST:event_preferencesActionPerformed
+
+    private void moreBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moreBtnMouseClicked
+        moreMenu.show(moreBtn, evt.getX(), evt.getY());
+    }//GEN-LAST:event_moreBtnMouseClicked
+
+    private void tagEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tagEditActionPerformed
+        Globals.mainFrame.setVisible(false);
+        Globals.mainFrame.remove(Globals.scrollPane);
+        ID3Editor id3=new ID3Editor();
+        Globals.scrollPane=new JScrollPane(id3);
+        Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setVisible(true);
+        id3.initialize();
+    }//GEN-LAST:event_tagEditActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton about;
@@ -234,8 +282,14 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JButton convertVideo;
     private javax.swing.JButton help;
     private javax.swing.JLabel infoLabel;
-    private javax.swing.JButton prefs;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenuItem joinSplit;
+    private javax.swing.JButton moreBtn;
+    private javax.swing.JPopupMenu moreMenu;
+    private javax.swing.JMenuItem networkConvert;
+    private javax.swing.JMenuItem preferences;
     private javax.swing.JButton reduceSize;
+    private javax.swing.JMenuItem tagEdit;
     // End of variables declaration//GEN-END:variables
 
 }

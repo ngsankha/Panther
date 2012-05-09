@@ -32,7 +32,7 @@ public class Main {
      * Execution begins here
      */
     public static void main(String[] args) throws Exception{
-        setLogger();
+        //setLogger();
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
         try{
@@ -57,7 +57,7 @@ public class Main {
                 Globals.mainFrame.add(Globals.scrollPane);
                 Globals.mainFrame.setSize(750,500);
                 Globals.mainFrame.setVisible(true);
-                Updater.update();
+                //Updater.update();
             }});
     }
     
