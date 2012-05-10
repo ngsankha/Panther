@@ -43,7 +43,8 @@ public class MainPanel extends javax.swing.JPanel {
 
         moreMenu = new javax.swing.JPopupMenu();
         tagEdit = new javax.swing.JMenuItem();
-        joinSplit = new javax.swing.JMenuItem();
+        split = new javax.swing.JMenuItem();
+        join = new javax.swing.JMenuItem();
         networkConvert = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         preferences = new javax.swing.JMenuItem();
@@ -66,9 +67,13 @@ public class MainPanel extends javax.swing.JPanel {
         });
         moreMenu.add(tagEdit);
 
-        joinSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-cut.png"))); // NOI18N
-        joinSplit.setText("Join and Split Audio and Video files");
-        moreMenu.add(joinSplit);
+        split.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-cut.png"))); // NOI18N
+        split.setText("Split Audio and Video files");
+        moreMenu.add(split);
+
+        join.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-copy.png"))); // NOI18N
+        join.setText("Join Audio and Video Files");
+        moreMenu.add(join);
 
         networkConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/preferences-system-network-proxy.png"))); // NOI18N
         networkConvert.setText("Convert from Network Stream");
@@ -107,7 +112,6 @@ public class MainPanel extends javax.swing.JPanel {
 
         batchConversion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/utilities-terminal.png"))); // NOI18N
         batchConversion.setText("<html><b>Batch Conversion</b><br><br>Click here to write scripts to customise the encoding process.");
-        batchConversion.setActionCommand("<html><b>Batch Conversion</b><br><br>Click here to write scripts to customise the encoding process.");
         batchConversion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         batchConversion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,13 +286,14 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JButton convertVideo;
     private javax.swing.JButton help;
     private javax.swing.JLabel infoLabel;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JMenuItem joinSplit;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem join;
     private javax.swing.JButton moreBtn;
     private javax.swing.JPopupMenu moreMenu;
     private javax.swing.JMenuItem networkConvert;
     private javax.swing.JMenuItem preferences;
     private javax.swing.JButton reduceSize;
+    private javax.swing.JMenuItem split;
     private javax.swing.JMenuItem tagEdit;
     // End of variables declaration//GEN-END:variables
 

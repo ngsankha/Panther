@@ -19,12 +19,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tagEditActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="joinSplit">
+        <MenuItem class="javax.swing.JMenuItem" name="split">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/sngforge/panther/resources/edit-cut.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Join and Split Audio and Video files"/>
+            <Property name="text" type="java.lang.String" value="Split Audio and Video files"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="join">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/sngforge/panther/resources/edit-copy.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Join Audio and Video Files"/>
           </Properties>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="networkConvert">
@@ -154,7 +162,6 @@
           <Image iconType="3" name="/sngforge/panther/resources/utilities-terminal.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Batch Conversion&lt;/b&gt;&lt;br&gt;&lt;br&gt;Click here to write scripts to customise the encoding process."/>
-        <Property name="actionCommand" type="java.lang.String" value="&lt;html&gt;&lt;b&gt;Batch Conversion&lt;/b&gt;&lt;br&gt;&lt;br&gt;Click here to write scripts to customise the encoding process."/>
         <Property name="horizontalAlignment" type="int" value="2"/>
       </Properties>
       <Events>
