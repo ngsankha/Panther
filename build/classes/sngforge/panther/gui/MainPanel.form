@@ -26,6 +26,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Split Audio and Video files"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="splitActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="join">
           <Properties>

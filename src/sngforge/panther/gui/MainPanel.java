@@ -69,6 +69,11 @@ public class MainPanel extends javax.swing.JPanel {
 
         split.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-cut.png"))); // NOI18N
         split.setText("Split Audio and Video files");
+        split.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                splitActionPerformed(evt);
+            }
+        });
         moreMenu.add(split);
 
         join.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-copy.png"))); // NOI18N
@@ -276,6 +281,14 @@ public class MainPanel extends javax.swing.JPanel {
         Globals.mainFrame.setVisible(true);
         id3.initialize();
     }//GEN-LAST:event_tagEditActionPerformed
+
+    private void splitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_splitActionPerformed
+        Globals.mainFrame.setVisible(false);
+        Globals.mainFrame.remove(Globals.scrollPane);
+        Globals.scrollPane=new JScrollPane(new Splitter());
+        Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setVisible(true);
+    }//GEN-LAST:event_splitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
