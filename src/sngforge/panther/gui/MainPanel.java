@@ -78,6 +78,11 @@ public class MainPanel extends javax.swing.JPanel {
 
         join.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/edit-copy.png"))); // NOI18N
         join.setText("Join Audio and Video Files");
+        join.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joinActionPerformed(evt);
+            }
+        });
         moreMenu.add(join);
 
         networkConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/preferences-system-network-proxy.png"))); // NOI18N
@@ -285,10 +290,18 @@ public class MainPanel extends javax.swing.JPanel {
     private void splitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_splitActionPerformed
         Globals.mainFrame.setVisible(false);
         Globals.mainFrame.remove(Globals.scrollPane);
-        Globals.scrollPane=new JScrollPane(new Splitter());
+        Globals.scrollPane=new JScrollPane(new SplitPanel());
         Globals.mainFrame.add(Globals.scrollPane);
         Globals.mainFrame.setVisible(true);
     }//GEN-LAST:event_splitActionPerformed
+
+    private void joinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinActionPerformed
+        Globals.mainFrame.setVisible(false);
+        Globals.mainFrame.remove(Globals.scrollPane);
+        Globals.scrollPane=new JScrollPane(new JoinPanel());
+        Globals.mainFrame.add(Globals.scrollPane);
+        Globals.mainFrame.setVisible(true);
+    }//GEN-LAST:event_joinActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

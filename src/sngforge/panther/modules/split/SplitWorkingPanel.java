@@ -66,7 +66,6 @@ public class SplitWorkingPanel extends sngforge.panther.modules.WorkingPanel{
 
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/process-stop.png"))); // NOI18N
         cancel.setText("Cancel");
-        cancel.setEnabled(false);
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
@@ -172,6 +171,7 @@ public class SplitWorkingPanel extends sngforge.panther.modules.WorkingPanel{
                         ee.timepoints.add(sec);
                         float offset=0;
                         for(int i=0;i<ee.timepoints.size();i++){
+                            if(!Globals.cancelled){
                             StringBuilder sb=new StringBuilder(ee.outDir.getAbsolutePath()+"/"+ee.inFile.getName());
                             sb.insert(sb.lastIndexOf("."), "."+(i+1));
                             EncodingAttributes ea=new EncodingAttributes();
@@ -189,6 +189,7 @@ public class SplitWorkingPanel extends sngforge.panther.modules.WorkingPanel{
                             overallProgress.setValue((i+1)*100/ee.timepoints.size());
                             offset+=(Float)ee.timepoints.get(i);
                             Globals.report=Globals.report+"Output:"+sb.toString()+" created successfully!\n";
+                            }
                         }
                     } catch(Exception ex){
                         System.err.println(ex);

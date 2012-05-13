@@ -37,6 +37,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Join Audio and Video Files"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="joinActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="networkConvert">
           <Properties>
