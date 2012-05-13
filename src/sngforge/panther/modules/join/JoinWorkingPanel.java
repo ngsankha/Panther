@@ -189,14 +189,13 @@ public class JoinWorkingPanel extends sngforge.panther.modules.WorkingPanel{
                 }
                     if(!Globals.cancelled){
                         currFile.setText("Stitching Files ...");
+                        currProgress.setIndeterminate(true);
                         File fout=new File(System.getProperty("user.home")+"/.panther/"+".temp.mpg");
                         try{
                             FileOutputStream outStream=new FileOutputStream(fout);
                             for(int i=0;i<list.size();i++){
                                 FileInputStream fin=new FileInputStream((File)list.get(i));
-                                /*int b;
-                                while((b=fin.read())!=-1)
-                                    outStream.write(b);*/
+                                // 1MB buffer size for very fast file joining
                                 byte[] buffer = new byte[1024*1024];
                                 int l;
                                 while ((l = fin.read(buffer)) != -1)
@@ -210,23 +209,25 @@ public class JoinWorkingPanel extends sngforge.panther.modules.WorkingPanel{
                             System.err.println(ex);
                             Globals.errorList.add(ex);
                         }}
-                    
+                    currProgress.setIndeterminate(false);
+                    if(!Globals.cancelled){
+                        currFile.setText("Creating File: "+ee.outFile.getName());
                         try{
                             MultimediaInfo mi=e.getInfo(new File((String)ee.files[0]));
                             String format=mi.getFormat();
-                            System.out.println(format);
                             EncodingAttributes ae=new EncodingAttributes();
                             ae.setFormat(format);
                             ae.setSameQuality(true);
                             EncoderListener rsl=new EncoderListener();
                             rsl.setParent(aewp);
-                            System.out.println(ee.outFile.getAbsolutePath());
                             e.encode(new File(System.getProperty("user.home")+"/.panther/"+".temp.mpg"), ee.outFile, ae,rsl);
                             overallProgress.setValue(100);
+                            Globals.report=Globals.report+"\nCreated successfully: "+ee.outFile.getAbsolutePath()+"\n";
                         }catch(Exception ex){
                             System.err.println(ex);
                             Globals.errorList.add(ex);
                         }
+                    }
                     Globals.report=Globals.report+"\nErrors:\n\n\n";
                     if(!Globals.errorList.isEmpty()){
                         for(int i=0;i<Globals.errorList.size();i++)
