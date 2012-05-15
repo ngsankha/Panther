@@ -278,6 +278,7 @@ public class ReduceSizePanel extends javax.swing.JPanel {
             bitrateInfo.setText("The bitrate is "+ai.getBitRate()+" kbps");
             bitrateInfo.setIcon(new ImageIcon(getClass().getResource("/sngforge/panther/resources/emblem-important.png")));
         }catch(Exception e){
+            e.printStackTrace();
             System.err.println(e);
             JOptionPane.showMessageDialog(null, e, "Panther - Error", JOptionPane.ERROR_MESSAGE);
         }

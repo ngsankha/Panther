@@ -181,7 +181,7 @@ public class ReduceSizeWorkingPanel extends WorkingPanel{
                                 ID3TagCopier.copyTags(f,fout);
                             Globals.report=Globals.report+"Input:"+f.getAbsolutePath()+"\nOutput:"+fout.getAbsolutePath()+"\nEncoded Successfully!\n\n";
                             overallProgress.setValue((i+1)*100/ee.files.length);
-                        }catch(Exception ex){
+                        }catch(Exception ex){                            
                             System.err.println(ex);
                             Globals.errorList.add(ex);
                         }

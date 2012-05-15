@@ -45,7 +45,6 @@ public class MainPanel extends javax.swing.JPanel {
         tagEdit = new javax.swing.JMenuItem();
         split = new javax.swing.JMenuItem();
         join = new javax.swing.JMenuItem();
-        networkConvert = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         preferences = new javax.swing.JMenuItem();
         infoLabel = new javax.swing.JLabel();
@@ -84,10 +83,6 @@ public class MainPanel extends javax.swing.JPanel {
             }
         });
         moreMenu.add(join);
-
-        networkConvert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/preferences-system-network-proxy.png"))); // NOI18N
-        networkConvert.setText("Convert from Network Stream");
-        moreMenu.add(networkConvert);
         moreMenu.add(jSeparator1);
 
         preferences.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sngforge/panther/resources/applications-system.png"))); // NOI18N
@@ -316,7 +311,6 @@ public class MainPanel extends javax.swing.JPanel {
     private javax.swing.JMenuItem join;
     private javax.swing.JButton moreBtn;
     private javax.swing.JPopupMenu moreMenu;
-    private javax.swing.JMenuItem networkConvert;
     private javax.swing.JMenuItem preferences;
     private javax.swing.JButton reduceSize;
     private javax.swing.JMenuItem split;

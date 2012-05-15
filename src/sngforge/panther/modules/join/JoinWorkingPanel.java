@@ -19,9 +19,7 @@
 
 package sngforge.panther.modules.join;
 
-import it.sauronsoftware.jave.Encoder;
-import it.sauronsoftware.jave.EncodingAttributes;
-import it.sauronsoftware.jave.MultimediaInfo;
+import it.sauronsoftware.jave.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -171,6 +169,10 @@ public class JoinWorkingPanel extends sngforge.panther.modules.WorkingPanel{
                         File fout=new File(System.getProperty("user.home")+"/.panther/"+f.getName()+".mpg");
                         list.add(fout);
                         EncodingAttributes ae=new EncodingAttributes();
+                        AudioAttributes aa=new AudioAttributes();
+                        VideoAttributes va=new VideoAttributes();
+                        ae.setAudioAttributes(aa);
+                        ae.setVideoAttributes(va);
                         ae.setFormat("mpeg");
                         ae.setSameQuality(true);
                         EncoderListener rsl=new EncoderListener();
@@ -216,6 +218,10 @@ public class JoinWorkingPanel extends sngforge.panther.modules.WorkingPanel{
                             MultimediaInfo mi=e.getInfo(new File((String)ee.files[0]));
                             String format=mi.getFormat();
                             EncodingAttributes ae=new EncodingAttributes();
+                            AudioAttributes aa=new AudioAttributes();
+                            VideoAttributes va=new VideoAttributes();
+                            ae.setAudioAttributes(aa);
+                            ae.setVideoAttributes(va);
                             ae.setFormat(format);
                             ae.setSameQuality(true);
                             EncoderListener rsl=new EncoderListener();
