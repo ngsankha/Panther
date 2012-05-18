@@ -64,7 +64,7 @@ public class PresetHandler {
         return Integer.parseInt(p.getProperty("audioChannels"));
     }
     
-    public int getAudioSamplimgRate(){
+    public int getAudioSamplingRate(){
         return Integer.parseInt(p.getProperty("audioSampling"));
     }
     
@@ -88,11 +88,11 @@ public class PresetHandler {
         return Integer.parseInt(p.getProperty("videoWidth"));
     }
     
-    public int getVideoDuration(){
+    public int getDuration(){
         return Integer.parseInt(p.getProperty("videoDuration","0"));
     }
     
-    public int getVideoOffset(){
+    public int getOffset(){
         return Integer.parseInt(p.getProperty("videoOffset","0"));
     }
 }

@@ -83,6 +83,8 @@ public class OutputPanel extends javax.swing.JPanel {
         ScriptEngineManager factory=new ScriptEngineManager();
         ScriptEngine engine=factory.getEngineByName("JavaScript");
         try{
+            engine.eval(new FileReader("js/bootstrap.js"));
+            engine.eval(new FileReader("js/custom.js"));
             engine.eval(new FileReader(src));
         }catch(Exception e){
             System.err.println(e);
